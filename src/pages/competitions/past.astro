@@ -1,0 +1,87 @@
+---
+import Layout from '../../components/Layout.astro';
+import profile from '../../data/profile.json';
+import competitions from '../../data/competitions.json';
+
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr);
+  return {
+    day: date.getDate().toString().padStart(2, '0'),
+    month: date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
+    year: date.getFullYear().toString()
+  };
+}
+
+function getResultClass(placement: number | string): string {
+  if (placement === 1) return 'gold';
+  if (placement === 2) return 'silver';
+  if (placement === 3) return 'bronze';
+  return 'participation';
+}
+
+function getResultDisplay(placement: number | string): string {
+  if (typeof placement === 'number') {
+    if (placement === 1) return '1st';
+    if (placement === 2) return '2nd';
+    if (placement === 3) return '3rd';
+    return `${placement}th`;
+  }
+  return placement;
+}
+---
+
+<Layout title={`Past Competitions | ${profile.name}`} description="View Kimberly's past dance competition results">
+  <main class="main">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">Past <em>Competitions</em></h1>
+        <p class="page-subtitle">
+          A journey through performances and achievements
+        </p>
+      </header>
+
+      {competitions.past.length > 0 ? (
+        <div class="competitions-grid">
+          {competitions.past.map((comp: any) => {
+            const date = formatDate(comp.date);
+            return (
+              <article class="competition-card animate-fade-in-up">
+                <div class="competition-date">
+                  <span class="day">{date.day}</span>
+                  <span class="month">{date.month}</span>
+                  <span class="year">{date.year}</span>
+                </div>
+
+                <div class="competition-info">
+                  <h3>{comp.name}</h3>
+                  <p class="location">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    {comp.location}
+                  </p>
+                  {comp.category && <span class="category">{comp.category}</span>}
+                </div>
+
+                {comp.placement && (
+                  <div class="competition-result">
+                    <span class={`result-badge ${getResultClass(comp.placement)}`}>
+                      {getResultDisplay(comp.placement)}
+                    </span>
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p style="text-align: center; color: var(--black-soft); padding: var(--space-2xl) 0; font-style: italic;">
+            Competition history coming soon...
+          </p>
+        </div>
+      )}
+    </div>
+  </main>
+</Layout>

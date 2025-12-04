@@ -1,0 +1,43 @@
+---
+import Layout from '../components/Layout.astro';
+import profile from '../data/profile.json';
+---
+
+<Layout>
+  <main class="hero">
+    <div class="hero-content">
+      <p class="hero-subtitle">Dancer & Choreographer</p>
+      <h1 class="hero-title">
+        Kimberly<br /><em>Matos</em>
+      </h1>
+      <p class="hero-description">
+        {profile.bio}
+      </p>
+      <a href="/about" class="hero-cta">
+        Discover More
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <div class="hero-image-container">
+        {profile.photo ? (
+          <img src={profile.photo} alt={profile.name} />
+        ) : (
+          <div class="hero-image-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 8v4l2 2"></path>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            </svg>
+            <span>Hero photo coming soon</span>
+          </div>
+        )}
+      </div>
+      <div class="hero-decoration">Dance</div>
+    </div>
+  </main>
+</Layout>
