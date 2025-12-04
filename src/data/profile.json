@@ -2,7 +2,8 @@
   "name": "Kimberly Matos",
   "tagline": "Dancer & Choreographer",
   "bio": "Passionate dancer with a love for movement and expression. Kimberly explores various dance styles and brings creativity and emotion to every performance.",
-  "photo": "",
+  "photo": "/images/hero.jpg",
+  "aboutPhoto": "/images/about.jpg",
   "styles": [
     "Contemporary",
     "Jazz",
