@@ -24,6 +24,45 @@ import profile from '../data/profile.json';
 
     <div class="hero-image">
       <div class="hero-image-container">
+        <!-- Musical Staff Background -->
+        <div class="hero-music-bg">
+          <!-- Treble Clef -->
+          <div class="treble-clef"></div>
+
+          <!-- Staff Lines -->
+          <div class="music-staff staff-1">
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+          </div>
+          <div class="music-staff staff-2">
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+          </div>
+          <div class="music-staff staff-3">
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+          </div>
+
+          <!-- Floating Notes -->
+          <span class="music-note note-1"></span>
+          <span class="music-note note-2"></span>
+          <span class="music-note note-3"></span>
+          <span class="music-note note-4"></span>
+          <span class="music-note note-5"></span>
+          <span class="music-note note-6"></span>
+          <span class="music-note note-7"></span>
+          <span class="music-note note-8"></span>
+        </div>
+
         {profile.photo ? (
           <img src={profile.photo} alt={profile.name} />
         ) : (
