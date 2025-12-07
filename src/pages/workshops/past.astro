@@ -3,12 +3,13 @@ import Layout from '../../components/Layout.astro';
 import profile from '../../data/profile.json';
 import workshops from '../../data/workshops.json';
 
-function formatDate(dateStr: string) {
-  const date = new Date(dateStr);
+function formatDateRange(startDateStr: string, endDateStr: string) {
+  const start = new Date(startDateStr);
+  const end = new Date(endDateStr);
   return {
-    day: date.getDate().toString().padStart(2, '0'),
-    month: date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
-    year: date.getFullYear().toString()
+    days: `${start.getDate()}-${end.getDate()}`,
+    month: start.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
+    year: start.getFullYear().toString()
   };
 }
 ---
@@ -26,11 +27,11 @@ function formatDate(dateStr: string) {
       {workshops.past.length > 0 ? (
         <div class="competitions-grid">
           {workshops.past.map((workshop: any) => {
-            const date = formatDate(workshop.date);
+            const date = formatDateRange(workshop.startDate, workshop.endDate);
             return (
               <article class="competition-card animate-fade-in-up">
                 <div class="competition-date">
-                  <span class="day">{date.day}</span>
+                  <span class="day">{date.days}</span>
                   <span class="month">{date.month}</span>
                   <span class="year">{date.year}</span>
                 </div>
