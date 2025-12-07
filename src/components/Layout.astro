@@ -69,6 +69,21 @@ function isActive(path: string): boolean {
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a href="/workshops/past" class:list={["nav-link", { active: isActive('/workshops') }]}>
+              Workshops
+            </a>
+            <div class="nav-dropdown">
+              <ul class="nav-dropdown-menu">
+                <li>
+                  <a href="/workshops/past" class="nav-dropdown-link">Past</a>
+                </li>
+                <li>
+                  <a href="/workshops/upcoming" class="nav-dropdown-link">Upcoming</a>
+                </li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </nav>
     </header>
